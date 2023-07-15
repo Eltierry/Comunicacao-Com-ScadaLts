@@ -1,0 +1,27 @@
+Fazer engenharia reversa de um banco de dados já existente usando o Entity Framework
+
+**************************************************************
+Cmandos iniciais:
+
+dotnet new console -n <NomeDoProjeto> -f net6.0
+
+dotnet tool install --global dotnet-ef
+
+dotnet add package Pomelo.EntityFrameworkCore.MySql --version 6.0.0
+
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.0
+
+dotnet ef dbcontext scaffold "server=localhost;port=3308;userid=root;password=;database=scadalts" Pomelo.EntityFrameworkCore.MySql -o Models/ScadaLtsClass
+
+Observação: O ScadaLts está na máquina local (localhost). Por padrão está na porta 3308 e sem senha.
+
+
+****************************************************************
+Crie uma pasta "Context".
+Dentro da pasta "Models/ScadaLtsClass" tem um arquivo chamado "scadaltsContext.cs". Mova-o para a para a pasta "Context".
+
+***************************************************************
+
+Observação: o Namespace está como (<NomeDoProjeto>.Models.ScadaLtsClass). Caso queira deixar no Namespace "<NomeDoProjeto>.Context", 
+terá que fazer o import (using <NomeDoProjeto>.Models.ScadaLtsClass;).
+Nesse projeto não foi feito isso.
